@@ -22,7 +22,7 @@ function App() {
       .get(`https://reqres.in/api/users`)
       .then((res) => {
         setRecommendList(res.data.data);
-        console.log(res.data.data);
+        console.log(res.data);
         // console.log("GET REQUEST", res)
       })
       .catch((err) => {
@@ -31,6 +31,17 @@ function App() {
       });
   };
   return (
+    // <Router>
+    //   <UserContext.Provider
+    //     value={{ user_id, RecommendList, setRecommendList, getData, logOut }}
+    //   >
+    //     <div className="App">
+    //       <PrivateRoute path="/Dashboard" component={Dashboard} />
+    //       <Route path="/Login" component={Login} />
+    //       <Route exact path="/" component={SignUp} />
+    //     </div>
+    //   </UserContext.Provider>
+    // </Router>
     <Router>
       <Context.Provider value={{ recommendList, setRecommendList, getData }}>
         <div className="App">

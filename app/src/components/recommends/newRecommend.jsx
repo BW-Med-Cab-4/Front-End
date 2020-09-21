@@ -10,7 +10,12 @@ const NewRecommend = (props) => {
     id: "1",
     user_id: "2",
     title: "",
-    insomnia: false,
+    flavor: "",
+    types: "",
+    ailments: "",
+    effects1: "",
+    effects2: "",
+    effects3: "",
   });
 
   // Web API POST request
@@ -18,10 +23,7 @@ const NewRecommend = (props) => {
   const addNewRecommend = (e) => {
     e.preventDefault();
     axios
-      .post(`https://reqres.in/api/users`, {
-        name: "morpheus",
-        job: "leader",
-      })
+      .post(`https://reqres.in/api/users`, {})
       .then((res) => {
         console.log("ADDED NEW POST", res);
         getData();
@@ -42,10 +44,11 @@ const NewRecommend = (props) => {
       ...recommendToEdit,
       [e.target.name]: e.target.value,
     });
+    console.log(recommendToEdit);
   };
 
   return (
-    <div className="newPost">
+    <div className="newRecommend">
       <h3>How do you feel today?</h3>
       <form onSubmit={addNewRecommend}>
         <label>
@@ -58,42 +61,60 @@ const NewRecommend = (props) => {
           />
         </label>
         <label>
-          Pick your favorite flavor:
-          <select value={this.state.value} onChange={this.handleChange}>
+          Favorite Flavor:
+          <select value={recommendToEdit.flavor} onChange={onChangeHandler}>
             <option value="grapefruit">Grapefruit</option>
             <option value="lime">Lime</option>
             <option value="coconut">Coconut</option>
             <option value="mango">Mango</option>
           </select>
-        </label>     <label><select>
+        </label>
         <label>
-          Pick your favorite flavor:
-          <select value={this.state.value} onChange={this.handleChange}>
-            <option value="grapefruit">Grapefruit</option>
-            <option value="lime">Lime</option>
-            <option value="coconut">Coconut</option>
-            <option value="mango">Mango</option>
+          Type:
+          <select value={recommendToEdit.types} onChange={onChangeHandler}>
+            <option value="recommendToEdit.types">types</option>
+            <option value="recommendToEdit.types">Lime</option>
+            <option value="recommendToEdit.types">Coconut</option>
+            <option value="recommendToEdit.types">Mango</option>
           </select>
-        </label>     <label><select>
+        </label>
         <label>
-          Pick your favorite flavor:
-          <select value={this.state.value} onChange={this.handleChange}>
-            <option value="grapefruit">Grapefruit</option>
+          Ailment:
+          <select value={recommendToEdit.ailments} onChange={onChangeHandler}>
+            <option value="ailments">Grapefruit</option>
             <option value="lime">Lime</option>
             <option value="coconut">Coconut</option>
             <option value="mango">Mango</option>
           </select>
-        </label>     <label><select>
+        </label>
         <label>
-          Pick your favorite flavor:
-          <select value={this.state.value} onChange={this.handleChange}>
+          Effects:
+          <select value={recommendToEdit.effects1} onChange={onChangeHandler}>
+            <option value="effects">Grapefruit</option>
+            <option value="lime">Lime</option>
+            <option value="coconut">Coconut</option>
+            <option value="mango">Mango</option>
+          </select>
+        </label>
+        <label>
+          Effects:
+          <select value={recommendToEdit.effects2} onChange={onChangeHandler}>
+            <option value="effects">Grapefruit</option>
+            <option value="lime">Lime</option>
+            <option value="coconut">Coconut</option>
+            <option value="mango">Mango</option>
+          </select>
+        </label>
+        <label>
+          Effects:
+          <select value={recommendToEdit.effects3} onChange={onChangeHandler}>
+            <option value="effects">Grapefruit</option>
             <option value="grapefruit">Grapefruit</option>
             <option value="lime">Lime</option>
             <option value="coconut">Coconut</option>
             <option value="mango">Mango</option>
           </select>
-        </label>    
-        
+        </label>
 
         <button id="addButton" type="submit">
           Add Recommend
