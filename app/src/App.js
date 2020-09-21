@@ -22,7 +22,7 @@ function App() {
       .get(`https://reqres.in/api/users`)
       .then((res) => {
         setRecommendList(res.data.data);
-        console.log(res.data);
+        console.log(res.data.data);
         // console.log("GET REQUEST", res)
       })
       .catch((err) => {
