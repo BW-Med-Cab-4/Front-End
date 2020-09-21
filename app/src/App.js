@@ -31,6 +31,17 @@ function App() {
       });
   };
   return (
+    // <Router>
+    //   <UserContext.Provider
+    //     value={{ user_id, RecommendList, setRecommendList, getData, logOut }}
+    //   >
+    //     <div className="App">
+    //       <PrivateRoute path="/Dashboard" component={Dashboard} />
+    //       <Route path="/Login" component={Login} />
+    //       <Route exact path="/" component={SignUp} />
+    //     </div>
+    //   </UserContext.Provider>
+    // </Router>
     <Router>
       <Context.Provider value={{ recommendList, setRecommendList, getData }}>
         <div className="App">
