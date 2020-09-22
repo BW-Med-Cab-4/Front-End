@@ -26,6 +26,8 @@ h3 {
   margin-right: 10%;
 }
 
-.paper {
-  margin-left: 20%;
+.editDeleteButtonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
