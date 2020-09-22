@@ -15,3 +15,17 @@ code {
 h3 {
   font-size: 5rem;
 }
+
+.menuItemContainer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  align-items: center;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.paper {
+  margin-left: 20%;
+}
