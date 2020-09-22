@@ -35,6 +35,7 @@
 // export default Login;
 import React, { useState } from "react";
 import LoginForm from "./LoginForm";
+import axios from 'axios'
 
 const initialFormValues = {
   email: "",
@@ -53,7 +54,20 @@ function Login() {
   const onSubmit = (evt) => {
     evt.preventDefault();
     console.log("this login button works");
+    axios
+      .post("https://med-cab-user.herokuapp.com/api/auth/login", formValues)
+      .then((res) => {
+        // setUsers([...users, res.data]);
+
+        localStorage.setItem("token", res.data.token);
+        setFormValues(initialFormValues);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
     setFormValues(initialFormValues);
+
   };
 
   return (

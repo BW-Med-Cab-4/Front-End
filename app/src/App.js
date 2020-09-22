@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import Nav from './Nav';
+import './App.css';
+// import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 import Dashboard from "./components/Dashboard";
 import PrivateRoute from "./components/utils/PrivateRoute";
@@ -44,6 +47,7 @@ function App() {
   };
   return (
     <Router>
+    <Nav />
       <Context.Provider
         value={{ userid, recommendList, setRecommendList, getData, logOut }}
       >
