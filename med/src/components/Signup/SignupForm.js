@@ -1,7 +1,7 @@
 import React from 'react'
 
 function SignupForm (props){
-    const {values, onSubmit, onChange}=props
+    const {values, onSubmit, onChange, errors}=props
 
 
     return (
@@ -37,6 +37,19 @@ function SignupForm (props){
                        placeholder = "Email" />
             </div>
 
+            <div className= "form-group">
+                <label>Phone</label>
+                <input 
+                    type='tel'
+                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                    name= 'phone'
+                    className="form-control"
+                    value = {values.phone}
+                    onChange={onChange}
+                    placeholder = 'Phone #'
+                />
+            </div>
+
             <div className = "form-group">
                 <label>Password</label>
                 <input type = "password"
@@ -47,6 +60,11 @@ function SignupForm (props){
                        placeholder = "password" />
             </div>
             <button className ="btn btn-primary btn-block">Sign up</button>  
+            <p>{errors.first_name}</p>
+            <p>{errors.last_name}</p>
+            <p>{errors.email}</p>
+            <p>{errors.password}</p>
+            <p>{errors.phone}</p>
         </form>
     )
 }
