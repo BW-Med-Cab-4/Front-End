@@ -61,7 +61,7 @@ function Recommend(props) {
           <button id="deleteButton">Delete</button>
         </div>
         <p>
-          <span>Title:</span> {recommend.prediction}
+          <span>Title:</span> {recommend.flavor}
         </p>
         <p>
           <span>Content:</span> {recommend.description}
