@@ -10,7 +10,7 @@ const Recommends = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [getData]);
   return (
     <div>
       {/* map through the recommends here to return a Post component */}
