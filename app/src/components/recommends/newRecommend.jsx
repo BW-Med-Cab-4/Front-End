@@ -1,21 +1,21 @@
 import React, { useState, useContext } from "react";
-// import axiosWithAuth from "../../utils/axiosWithAuth";
+import axiosWithAuth from "../utils/axiosWithAuth";
 import axios from "axios";
 import { Context } from "../utils/Context";
 
 const NewRecommend = (props) => {
-  const { getData } = useContext(Context);
+  const { userid, getData } = useContext(Context);
 
   const [recommendToEdit, setRecommendToEdit] = useState({
     id: "1",
-    user_id: "2",
-    title: "",
+    userid: "2",
     flavor: "",
     types: "",
-    ailments: "",
-    effects1: "",
-    effects2: "",
-    effects3: "",
+    ailment: "",
+    effect: "",
+    prediction: "",
+    description: "",
+    raiting: "",
   });
 
   // Web API POST request
@@ -23,22 +23,36 @@ const NewRecommend = (props) => {
   const addNewRecommend = (e) => {
     e.preventDefault();
     axios
-      .post(`https://reqres.in/api/users`, {})
+      .post(`https://reqres.in/api/users`, {
+        userid: userid,
+        flavor: recommendToEdit.flavor,
+        type: recommendToEdit.type,
+        ailment: recommendToEdit.ailment,
+        effect: recommendToEdit.effect,
+      })
       .then((res) => {
-        console.log("Added New Recoomsend", res);
+        console.log("Added New Recommend", res);
+        axiosWithAuth();
         getData();
         alert("New Recommend Added");
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        setRecommendToEdit({
+          id: "1",
+          userid: "2",
+          flavor: "",
+          types: "",
+          ailment: "",
+          effect: "",
+          prediction: "",
+          description: "",
+          raiting: "",
+        });
       });
   };
-  //   setRecommendToEdit({
-  //     title: recommendToEdit.title,
-  //     insomnia: recommendToEdit.insomnia,
-  //   });
-  //   console.log(recommendToEdit);
-  // };
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setRecommendToEdit({
@@ -53,15 +67,6 @@ const NewRecommend = (props) => {
       <h3>How do you feel today?</h3>
       <form onSubmit={addNewRecommend}>
         <label>
-          <input
-            type="text"
-            name="title"
-            value={recommendToEdit.title}
-            onChange={onChangeHandler}
-            placeholder="title"
-          />
-        </label>
-        <label>
           Favorite Flavor:
           <select value={recommendToEdit.flavor} onChange={onChangeHandler}>
             <option value="grapefruit">Grapefruit</option>
@@ -74,7 +79,7 @@ const NewRecommend = (props) => {
           Type:
           <select
             name="types"
-            value={recommendToEdit.types}
+            value={recommendToEdit.type}
             onChange={onChangeHandler}
           >
             <option value="">types</option>
@@ -85,7 +90,7 @@ const NewRecommend = (props) => {
         </label>
         <label>
           Ailment:
-          <select value={recommendToEdit.ailments} onChange={onChangeHandler}>
+          <select value={recommendToEdit.ailment} onChange={onChangeHandler}>
             <option value="ailments">Grapefruit</option>
             <option value="lime">Lime</option>
             <option value="coconut">Coconut</option>
@@ -94,27 +99,8 @@ const NewRecommend = (props) => {
         </label>
         <label>
           Effects:
-          <select value={recommendToEdit.effects1} onChange={onChangeHandler}>
+          <select value={recommendToEdit.effects} onChange={onChangeHandler}>
             <option value="effects">Grapefruit</option>
-            <option value="lime">Lime</option>
-            <option value="coconut">Coconut</option>
-            <option value="mango">Mango</option>
-          </select>
-        </label>
-        <label>
-          Effects:
-          <select value={recommendToEdit.effects2} onChange={onChangeHandler}>
-            <option value="effects">Grapefruit</option>
-            <option value="lime">Lime</option>
-            <option value="coconut">Coconut</option>
-            <option value="mango">Mango</option>
-          </select>
-        </label>
-        <label>
-          Effects:
-          <select value={recommendToEdit.effects3} onChange={onChangeHandler}>
-            <option value="effects">Grapefruit</option>
-            <option value="grapefruit">Grapefruit</option>
             <option value="lime">Lime</option>
             <option value="coconut">Coconut</option>
             <option value="mango">Mango</option>

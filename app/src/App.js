@@ -1,49 +1,59 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import axios from "axios";
 
 import Dashboard from "./components/Dashboard";
-// import PrivateRoute from "./components/utils/PrivateRoute";
-// import axiosWithAuth from "./components/utils/axiosWithAuth";
+import PrivateRoute from "./components/utils/PrivateRoute";
+import axiosWithAuth from "./components/utils/axiosWithAuth";
 
 import { Context } from "./components/utils/Context";
 
 function App() {
+  const userid = window.localStorage.getItem("id");
   const [recommendList, setRecommendList] = useState([
     {
-      id: "",
-      user_id: "",
-      title: "",
+      id: "1",
+      userid: "1",
+      effect: "",
+      ailment: "",
+      flavor: "",
+      type: "",
+      prediction: "",
+      description: "",
+      rating: "",
     },
   ]);
   const getData = () => {
-    axios
-      .get(`https://reqres.in/api/users`)
+    axiosWithAuth()
+      .get(`https://med-cab-user.herokuapp.com/api/users/${userid}`)
       .then((res) => {
-        setRecommendList(res.data.data);
-        console.log(res.data.data);
-        // console.log("GET REQUEST", res)
+        setRecommendList(res.data);
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
         // debugger
       });
   };
+  const logOut = () => {
+    window.localStorage.clear();
+  };
   return (
     // <Router>
-    //   <UserContext.Provider
-    //     value={{ user_id, RecommendList, setRecommendList, getData, logOut }}
+    //   <Context.Provider
+    //     value={{ userid, recommendList, setRecommendList, getData, logOut }}
     //   >
     //     <div className="App">
     //       <PrivateRoute path="/Dashboard" component={Dashboard} />
-    //       <Route path="/Login" component={Login} />
-    //       <Route exact path="/" component={SignUp} />
+    //       {/* <Route path="/Login" component={Login} />
+    //       <Route exact path="/" component={SignUp} /> */}
     //     </div>
-    //   </UserContext.Provider>
+    //   </Context.Provider>
     // </Router>
     <Router>
-      <Context.Provider value={{ recommendList, setRecommendList, getData }}>
+      <Context.Provider
+        value={{ userid, recommendList, setRecommendList, getData, logOut }}
+      >
         <div className="App">
           <Route exact path="/" component={Dashboard} />
         </div>

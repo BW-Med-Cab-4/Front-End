@@ -60,6 +60,12 @@ function Recommend(props) {
           </div>
           <button id="deleteButton">Delete</button>
         </div>
+        <p>
+          <span>Title:</span> {recommend.prediction}
+        </p>
+        <p>
+          <span>Content:</span> {recommend.description}
+        </p>
       </div>
     </StyledForm>
   );
