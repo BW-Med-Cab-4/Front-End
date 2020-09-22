@@ -2,6 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import EditRecommend from "./EditRecommend";
 
+// Material UI Imports
+import Card from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button'
+
+
 function Recommend(props) {
   const { recommend } = props;
 
@@ -48,16 +53,23 @@ function Recommend(props) {
   return (
     <StyledForm>
       <div className="cardBox">
-        <div className="card">
-          <button id="editButton" onClick={openModal}>
-            Edit
-          </button>
+        <Card className="card">
+         
           <div id="modalTest">
             <p className="exit" onClick={closeModal}>
               X
             </p>
             <EditRecommend />
           </div>
+
+          
+          <div className="editDeleteButtonContainer">
+          <Button variant="contained" color="primary" id="editButton" onClick={openModal}>
+            Edit
+          </Button>
+          <Button variant="contained" color="primary" id="deleteButton">Delete</Button>
+          </div>
+        </Card>
           <button id="deleteButton">Delete</button>
         </div>
         <p>
