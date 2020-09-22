@@ -1,14 +1,12 @@
 import React, { useState, useContext } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
-import axios from "axios";
+
 import { Context } from "../utils/Context";
 
 const NewRecommend = (props) => {
   const { userid, getData } = useContext(Context);
 
   const [recommendToEdit, setRecommendToEdit] = useState({
-    id: "1",
-    userid: "2",
     flavor: "",
     types: "",
     ailment: "",
@@ -22,8 +20,8 @@ const NewRecommend = (props) => {
 
   const addNewRecommend = (e) => {
     e.preventDefault();
-    axios
-      .post(`https://reqres.in/api/users`, {
+    axiosWithAuth()
+      .post(`https://med-cab-user.herokuapp.com/api/inputs`, {
         userid: userid,
         flavor: recommendToEdit.flavor,
         type: recommendToEdit.type,
@@ -32,8 +30,8 @@ const NewRecommend = (props) => {
       })
       .then((res) => {
         console.log("Added New Recommend", res);
-        axiosWithAuth();
-        getData();
+
+        // getData();
         alert("New Recommend Added");
       })
       .catch((err) => {

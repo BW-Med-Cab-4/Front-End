@@ -18,7 +18,7 @@ const EditRecommend = (props) => {
   // const editRecommend = (e, id) => {
   //   e.preventDefault();
   //   axiosWithAuth()
-  //     .put(`http://localhost:5000/api/posts/${id}`, {
+  //     .put(`https://med-cab-user.herokuapp.com/api/inputs${id}`, {
   //       userid: userid,
   //       effect: recommendToEdit.effect,
   //       ailment: recommendToEdit.ailment,
@@ -36,7 +36,7 @@ const EditRecommend = (props) => {
   //       });
   //     });
   // };
-  //       //Resubmits post to DS API
+  //       //Resubmits recommend to DS API
   //       axios
   //         .post(``, {
   //
