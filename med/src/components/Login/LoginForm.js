@@ -8,7 +8,7 @@ function LoginForm (props){
         <form onSubmit ={onSubmit}>
             <div className = "form-group">
                 <label>Email</label>
-                <input type = "text"
+                <input type = "email"
                        name = "email"
                        className = "form-control"
                        value = {values.email}
@@ -18,7 +18,7 @@ function LoginForm (props){
 
             <div className = "form-group">
                 <label>Password</label>
-                <input type = "text"
+                <input type = "password"
                        name = "password"
                        className = "form-control"
                        value = {values.password}

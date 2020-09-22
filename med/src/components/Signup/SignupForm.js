@@ -29,7 +29,7 @@ function SignupForm (props){
 
             <div className = "form-group">
                 <label>Email</label>
-                <input type = "text"
+                <input type = "email"
                        className = "form-control"
                        name = "email"
                        value = {values.email}
@@ -39,7 +39,7 @@ function SignupForm (props){
 
             <div className = "form-group">
                 <label>Password</label>
-                <input type = "text"
+                <input type = "password"
                        className = "form-control"
                        name = "password"
                        value = {values.password}

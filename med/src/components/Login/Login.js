@@ -18,6 +18,7 @@ function Login (){
     const onSubmit = evt =>{
         evt.preventDefault()
         console.log("this login button works")
+        setFormValues(initialFormValues)
     }
 
     return(
