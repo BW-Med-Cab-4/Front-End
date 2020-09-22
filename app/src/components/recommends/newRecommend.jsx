@@ -3,6 +3,13 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import { Context } from "../utils/Context";
 
+// Material UI Imports
+import Button from '@material-ui/core/Button'
+import Select from '@material-ui/core/Select'
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
+
+
 const NewRecommend = (props) => {
   const { getData } = useContext(Context);
 
@@ -53,6 +60,7 @@ const NewRecommend = (props) => {
       <h3>How do you feel today?</h3>
       <form onSubmit={addNewRecommend}>
         <label>
+          <TextField>
           <input
             type="text"
             name="title"
@@ -60,70 +68,71 @@ const NewRecommend = (props) => {
             onChange={onChangeHandler}
             placeholder="title"
           />
+          </TextField>
         </label>
         <label>
           Favorite Flavor:
-          <select value={recommendToEdit.flavor} onChange={onChangeHandler}>
-            <option value="grapefruit">Grapefruit</option>
-            <option value="lime">Lime</option>
-            <option value="coconut">Coconut</option>
-            <option value="mango">Mango</option>
-          </select>
+          <Select value={recommendToEdit.flavor} onChange={onChangeHandler}>
+            <MenuItem value="grapefruit">Grapefruit</MenuItem>
+            <MenuItem value="lime">Lime</MenuItem>
+            <MenuItem value="coconut">Coconut</MenuItem>
+            <MenuItem value="mango">Mango</MenuItem>
+          </Select>
         </label>
         <label>
           Type:
-          <select
+          <Select
             name="types"
             value={recommendToEdit.types}
             onChange={onChangeHandler}
           >
-            <option value="">types</option>
-            <option value="lime">Lime</option>
-            <option value="coconut">Coconut</option>
-            <option value="jello">jello</option>
-          </select>
+            <MenuItem value="">types</MenuItem>
+            <MenuItem value="lime">Lime</MenuItem>
+            <MenuItem value="coconut">Coconut</MenuItem>
+            <MenuItem value="jello">jello</MenuItem>
+          </Select>
         </label>
         <label>
           Ailment:
-          <select value={recommendToEdit.ailments} onChange={onChangeHandler}>
-            <option value="ailments">Grapefruit</option>
-            <option value="lime">Lime</option>
-            <option value="coconut">Coconut</option>
-            <option value="mango">Mango</option>
-          </select>
+          <Select value={recommendToEdit.ailments} onChange={onChangeHandler}>
+            <MenuItem value="ailments">Grapefruit</MenuItem>
+            <MenuItem value="lime">Lime</MenuItem>
+            <MenuItem value="coconut">Coconut</MenuItem>
+            <MenuItem value="mango">Mango</MenuItem>
+          </Select>
         </label>
         <label>
           Effects:
-          <select value={recommendToEdit.effects1} onChange={onChangeHandler}>
-            <option value="effects">Grapefruit</option>
-            <option value="lime">Lime</option>
-            <option value="coconut">Coconut</option>
-            <option value="mango">Mango</option>
-          </select>
+          <Select value={recommendToEdit.effects1} onChange={onChangeHandler}>
+            <MenuItem value="effects">Grapefruit</MenuItem>
+            <MenuItem value="lime">Lime</MenuItem>
+            <MenuItem value="coconut">Coconut</MenuItem>
+            <MenuItem value="mango">Mango</MenuItem>
+          </Select>
         </label>
         <label>
           Effects:
-          <select value={recommendToEdit.effects2} onChange={onChangeHandler}>
-            <option value="effects">Grapefruit</option>
-            <option value="lime">Lime</option>
-            <option value="coconut">Coconut</option>
-            <option value="mango">Mango</option>
-          </select>
+          <Select value={recommendToEdit.effects2} onChange={onChangeHandler}>
+            <MenuItem value="effects">Grapefruit</MenuItem>
+            <MenuItem value="lime">Lime</MenuItem>
+            <MenuItem value="coconut">Coconut</MenuItem>
+            <MenuItem value="mango">Mango</MenuItem>
+          </Select>
         </label>
         <label>
           Effects:
-          <select value={recommendToEdit.effects3} onChange={onChangeHandler}>
-            <option value="effects">Grapefruit</option>
-            <option value="grapefruit">Grapefruit</option>
-            <option value="lime">Lime</option>
-            <option value="coconut">Coconut</option>
-            <option value="mango">Mango</option>
-          </select>
+          <Select value={recommendToEdit.effects3} onChange={onChangeHandler}>
+            <MenuItem value="effects">Grapefruit</MenuItem>
+            <MenuItem value="grapefruit">Grapefruit</MenuItem>
+            <MenuItem value="lime">Lime</MenuItem>
+            <MenuItem value="coconut">Coconut</MenuItem>
+            <MenuItem value="mango">Mango</MenuItem>
+          </Select>
         </label>
 
-        <button id="addButton" type="submit">
+        <Button variant="contained" color="primary" id="addButton" type="submit">
           Add Recommend
-        </button>
+        </Button>
       </form>
     </div>
   );
