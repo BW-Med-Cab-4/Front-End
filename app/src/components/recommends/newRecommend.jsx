@@ -25,7 +25,7 @@ const NewRecommend = (props) => {
     axios
       .post(`https://reqres.in/api/users`, {})
       .then((res) => {
-        console.log("Added New Recoomend", res);
+        console.log("Added New Recoomsend", res);
         getData();
         alert("New Recommend Added");
       })
@@ -40,7 +40,7 @@ const NewRecommend = (props) => {
   //   console.log(recommendToEdit);
   // };
   const onChangeHandler = (e) => {
-    const { name, value } = evt.target;
+    const { name, value } = e.target;
     setRecommendToEdit({
       ...recommendToEdit,
       [name]: value,
@@ -80,7 +80,7 @@ const NewRecommend = (props) => {
             <option value="">types</option>
             <option value="lime">Lime</option>
             <option value="coconut">Coconut</option>
-            <option value="jello">Mango</option>
+            <option value="jello">jello</option>
           </select>
         </label>
         <label>
