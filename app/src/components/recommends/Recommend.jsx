@@ -61,6 +61,7 @@ function Recommend(props) {
             </p>
             <EditRecommend />
           </div>
+
           
           <div className="editDeleteButtonContainer">
           <Button variant="contained" color="primary" id="editButton" onClick={openModal}>
@@ -69,6 +70,14 @@ function Recommend(props) {
           <Button variant="contained" color="primary" id="deleteButton">Delete</Button>
           </div>
         </Card>
+          <button id="deleteButton">Delete</button>
+        </div>
+        <p>
+          <span>Title:</span> {recommend.flavor}
+        </p>
+        <p>
+          <span>Content:</span> {recommend.description}
+        </p>
       </div>
     </StyledForm>
   );
