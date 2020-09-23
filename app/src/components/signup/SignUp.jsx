@@ -3,6 +3,7 @@ import * as yup from "yup";
 import formSchema from "./FormSchema";
 import SignUpForm from "./SignUpForm";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const initialFormValues = {
   first_name: "",
@@ -25,6 +26,7 @@ function SignUp() {
   const [users, setUsers] = useState(initialUsers);
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialErrors);
+  let history = useHistory();
 
   const onInputChange = (evt) => {
     yup
@@ -89,7 +91,9 @@ function SignUp() {
         setUsers([...users, res.data]);
 
         localStorage.setItem("token", res.data.token);
+
         setFormValues(initialFormValues);
+        history.push("/Login");
       })
       .catch((err) => {
         console.log(err);

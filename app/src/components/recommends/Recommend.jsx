@@ -3,9 +3,8 @@ import styled from "styled-components";
 import EditRecommend from "./EditRecommend";
 
 // Material UI Imports
-import Card from '@material-ui/core/Card';
-import Button from '@material-ui/core/Button'
-
+import Card from "@material-ui/core/Card";
+import Button from "@material-ui/core/Button";
 
 function Recommend(props) {
   const { recommend } = props;
@@ -52,9 +51,9 @@ function Recommend(props) {
 
   return (
     <StyledForm>
+      {" "}
       <div className="cardBox">
         <Card className="card">
-         
           <div id="modalTest">
             <p className="exit" onClick={closeModal}>
               X
@@ -62,23 +61,28 @@ function Recommend(props) {
             <EditRecommend />
           </div>
 
-          
           <div className="editDeleteButtonContainer">
-          <Button variant="contained" color="primary" id="editButton" onClick={openModal}>
-            Edit
-          </Button>
-          <Button variant="contained" color="primary" id="deleteButton">Delete</Button>
+            <Button
+              variant="contained"
+              color="primary"
+              id="editButton"
+              onClick={openModal}
+            >
+              Edit
+            </Button>
+            <Button variant="contained" color="primary" id="deleteButton">
+              Delete
+            </Button>
           </div>
         </Card>
-          <button id="deleteButton">Delete</button>
-        </div>
-        <p>
-          <span>Title:</span> {recommend.flavor}
-        </p>
-        <p>
-          <span>Content:</span> {recommend.description}
-        </p>
+        <button id="deleteButton">Delete</button>
       </div>
+      <p>
+        <span>Title:</span> {recommend.flavor}
+      </p>
+      <p>
+        <span>Content:</span> {recommend.description}
+      </p>
     </StyledForm>
   );
 }
