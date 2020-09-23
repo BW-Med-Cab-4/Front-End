@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import formSchema from "./FormSchema";
 import SignUpForm from "./SignUpForm";
-import axios from "axios";
+import axiosWithAuth from "../utils/axiosWithAuth";
+
+import { useHistory } from "react-router-dom";
 
 const initialFormValues = {
   first_name: "",
@@ -25,6 +27,7 @@ function SignUp() {
   const [users, setUsers] = useState(initialUsers);
   const [formValues, setFormValues] = useState(initialFormValues);
   const [formErrors, setFormErrors] = useState(initialErrors);
+  let history = useHistory();
 
   const onInputChange = (evt) => {
     yup
@@ -83,13 +86,15 @@ function SignUp() {
   };
 
   const postNewUser = (newUser) => {
-    axios
+    axiosWithAuth()
       .post("https://med-cab-user.herokuapp.com/api/auth/register", newUser)
       .then((res) => {
         setUsers([...users, res.data]);
-
+        window.localStorage.setItem("id", res.data.id);
         localStorage.setItem("token", res.data.token);
+
         setFormValues(initialFormValues);
+        history.push("/Login");
       })
       .catch((err) => {
         console.log(err);
