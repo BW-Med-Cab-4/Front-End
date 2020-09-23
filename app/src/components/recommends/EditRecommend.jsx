@@ -3,7 +3,7 @@ import axiosWithAuth from "../utils/axiosWithAuth";
 import { Context } from "../utils/Context";
 
 const EditRecommend = (props) => {
-  const { getData } = useContext(Context);
+  const { userid, getData } = useContext(Context);
 
   const [recommendToEdit, setRecommendToEdit] = useState({
     id: "1",
@@ -14,47 +14,30 @@ const EditRecommend = (props) => {
     effect: "",
   });
 
-  // // Web API PUT request
-  // const editRecommend = (e, id) => {
-  //   e.preventDefault();
-  //   axiosWithAuth()
-  //     .put(`https://med-cab-user.herokuapp.com/api/inputs${id}`, {
-  //       userid: userid,
-  //       effect: recommendToEdit.effect,
-  //       ailment: recommendToEdit.ailment,
-  //       flavor: recommendToEdit.flavor,
-  //       type: recommendToEdit.type,
-  //     })
-  //     .then((res) => {
-  //       // console.log("Recommend Changed", res);
-  //       setRecommendToEdit({
-  //         userid: userid,
-  //         effect: recommendToEdit.effect,
-  //         ailment: recommendToEdit.ailment,
-  //         flavor: recommendToEdit.flavor,
-  //         type: recommendToEdit.type,
-  //       });
-  //     });
-  // };
-  //       //Resubmits recommend to DS API
-  //       axios
-  //         .post(``, {
-  //
-  //         })
-  //         .then((res) => {
-  //           console.log("Submitted recommend to DS API", res);
-  //
-  //           // alert("Recommend Submitted")
-  //         })
-  //         .catch((err) => {
-  //           console.log(err);
-  //         });
-  //       getData();
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
+  // Web API PUT request
+  const editRecommend = (e, id) => {
+    e.preventDefault();
+    axiosWithAuth()
+      .put(`https://med-cab-user.herokuapp.com/api/inputs${id}`, {
+        userid: userid,
+        effect: recommendToEdit.effect,
+        ailment: recommendToEdit.ailment,
+        flavor: recommendToEdit.flavor,
+        type: recommendToEdit.type,
+      })
+      .then((res) => {
+        // console.log("Recommend Changed", res);
+        console.log(recommendToEdit);
+        setRecommendToEdit({
+          userid: userid,
+          effect: recommendToEdit.effect,
+          ailment: recommendToEdit.ailment,
+          flavor: recommendToEdit.flavor,
+          type: recommendToEdit.type,
+        });
+      });
+  };
+
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setRecommendToEdit({
@@ -63,6 +46,7 @@ const EditRecommend = (props) => {
     });
     console.log(recommendToEdit);
   };
+
   return (
     <div>
       <h1>Update Recommend</h1>
@@ -108,9 +92,9 @@ const EditRecommend = (props) => {
           </select>
         </label>
 
-        {/* <button id="editbutton" onClick={(e) => editRecommend(e, props.id)}>
+        <button id="editbutton" onClick={(e) => editRecommend(e, props.id)}>
           Submit
-        </button> */}
+        </button>
       </form>
     </div>
   );

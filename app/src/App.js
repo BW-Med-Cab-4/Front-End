@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-
-import './App.css';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import "./App.css";
+// import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Nav from "./components/Nav";
 import "./App.css";
 
@@ -53,15 +52,12 @@ function App() {
         <div className="App">
           <PrivateRoute path="/Dashboard" component={Dashboard} />
           <div className="auth-wrapper">
-          <div className="auth-inner">
-          <Route path="/Login" component={Login} />
-          <Route exact path="/" component={SignUp} />
+            <div className="auth-inner">
+              <Route path="/Login" component={Login} />
+              <Route exact path="/" component={SignUp} />
+            </div>
           </div>
-          </div>
-        
         </div>
-
-
       </Context.Provider>
     </Router>
     // <Router>
