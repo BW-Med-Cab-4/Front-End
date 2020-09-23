@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import * as yup from "yup";
 import formSchema from "./FormSchema";
 import SignUpForm from "./SignUpForm";
-import axios from "axios";
+import axiosWithAuth from "../utils/axiosWithAuth";
+
 import { useHistory } from "react-router-dom";
 
 const initialFormValues = {
@@ -85,7 +86,7 @@ function SignUp() {
   };
 
   const postNewUser = (newUser) => {
-    axios
+    axiosWithAuth()
       .post("https://med-cab-user.herokuapp.com/api/auth/register", newUser)
       .then((res) => {
         setUsers([...users, res.data]);

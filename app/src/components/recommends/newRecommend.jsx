@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
-
 import { Context } from "../utils/Context";
 
+import EditRecommend from "./EditRecommend";
 // Material UI Imports
 import Button from "@material-ui/core/Button";
 import Select from "@material-ui/core/Select";
@@ -174,53 +174,6 @@ const NewRecommend = (props) => {
           </Button>
         </form>
       </div>
-      {/* <h3>How do you feel today?</h3>
-      <form onSubmit={addNewRecommend}>
-        <label>
-          Favorite Flavor:
-          <select value={recommendToEdit.flavor} onChange={onChangeHandler}>
-            <option value="grapefruit">Grapefruit</option>
-            <option value="lime">Lime</option>
-            <option value="coconut">Coconut</option>
-            <option value="mango">Mango</option>
-          </select>
-        </label>
-        <label>
-          Type:
-          <select
-            name="types"
-            value={recommendToEdit.type}
-            onChange={onChangeHandler}
-          >
-            <option value="">types</option>
-            <option value="lime">Lime</option>
-            <option value="coconut">Coconut</option>
-            <option value="jello">jello</option>
-          </select>
-        </label>
-        <label>
-          Ailment:
-          <select value={recommendToEdit.ailment} onChange={onChangeHandler}>
-            <option value="ailments">Grapefruit</option>
-            <option value="lime">Lime</option>
-            <option value="coconut">Coconut</option>
-            <option value="mango">Mango</option>
-          </select>
-        </label>
-        <label>
-          Effects:
-          <select value={recommendToEdit.effects} onChange={onChangeHandler}>
-            <option value="effects">Grapefruit</option>
-            <option value="lime">Lime</option>
-            <option value="coconut">Coconut</option>
-            <option value="mango">Mango</option>
-          </select>
-        </label>
-
-        <button id="addButton" type="submit">
-          Add Recommend
-        </button>
-      </form> */}
     </div>
   );
 };

@@ -3,15 +3,15 @@ import axiosWithAuth from "../utils/axiosWithAuth";
 import { Context } from "../utils/Context";
 
 const EditRecommend = (props) => {
-  const { userid, getData } = useContext(Context);
+  const { getData } = useContext(Context);
 
   const [recommendToEdit, setRecommendToEdit] = useState({
     id: "1",
     userid: "2",
     flavor: "",
-    types: "",
-    ailments: "",
-    effects: "",
+    type: "",
+    ailment: "",
+    effect: "",
   });
 
   // // Web API PUT request

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Nav from "./Nav";
+import Nav from "./components/Nav";
 import "./App.css";
 // import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
