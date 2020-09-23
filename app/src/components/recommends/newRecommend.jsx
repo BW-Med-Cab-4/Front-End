@@ -82,21 +82,6 @@ const NewRecommend = (props) => {
     <form onSubmit={addNewRecommend}>
 
     <div className='menuItemContainer'>
-    <Grid item xs={4}>
-        <Paper className={classes.paper}>
-        <label>
-        <TextField>
-        <input
-          type="text"
-          name="title"
-          value={recommendToEdit.title}
-          onChange={onChangeHandler}
-          placeholder="title"
-        />
-        </TextField>
-      </label>
-        </Paper>
-      </Grid>
       
 
       <Grid item xs={4}>
@@ -104,10 +89,18 @@ const NewRecommend = (props) => {
         <label>
         Favorite Flavor:
         <Select value={recommendToEdit.flavor} onChange={onChangeHandler}>
-          <MenuItem value="grapefruit">Grapefruit</MenuItem>
-          <MenuItem value="lime">Lime</MenuItem>
-          <MenuItem value="coconut">Coconut</MenuItem>
-          <MenuItem value="mango">Mango</MenuItem>
+          <MenuItem value="Citrus">Citrus</MenuItem>
+          <MenuItem value="Sweet">Sweet</MenuItem>
+          <MenuItem value="Earthy">Earthy</MenuItem>
+          <MenuItem value="Skunk">Skunk</MenuItem>
+          <MenuItem value="Berry">Berry</MenuItem>
+          <MenuItem value="Lemon">Lemon</MenuItem>
+          <MenuItem value="Lime">Lime</MenuItem>
+          <MenuItem value="Blueberry">Blueberry</MenuItem>
+          <MenuItem value="Strawberry">Strawberry</MenuItem>
+          <MenuItem value="Mango">Mango</MenuItem>
+          <MenuItem value="Rose">Rose</MenuItem>
+          <MenuItem value="Pepper">Pepper</MenuItem>
         </Select>
       </label>
         </Paper>
@@ -123,10 +116,9 @@ const NewRecommend = (props) => {
           value={recommendToEdit.types}
           onChange={onChangeHandler}
         >
-          <MenuItem value="">types</MenuItem>
-          <MenuItem value="lime">Lime</MenuItem>
-          <MenuItem value="coconut">Coconut</MenuItem>
-          <MenuItem value="jello">jello</MenuItem>
+          <MenuItem value="Sativa">Sativa</MenuItem>
+          <MenuItem value="Indica">Indica</MenuItem>
+          <MenuItem value="Hybrid">Hybrid</MenuItem>
         </Select>
       </label>
         </Paper>
@@ -137,10 +129,15 @@ const NewRecommend = (props) => {
       <label>
         Ailment:
         <Select value={recommendToEdit.ailments} onChange={onChangeHandler}>
-          <MenuItem value="ailments">Grapefruit</MenuItem>
-          <MenuItem value="lime">Lime</MenuItem>
-          <MenuItem value="coconut">Coconut</MenuItem>
-          <MenuItem value="mango">Mango</MenuItem>
+          <MenuItem value="Depression">Depression</MenuItem>
+          <MenuItem value="Pain">Pain</MenuItem>
+          <MenuItem value="Insomnia">Insomnia</MenuItem>
+          <MenuItem value="Stress">Stress</MenuItem>
+          <MenuItem value="Lack of Appetite">Lack of Appetite</MenuItem>
+          <MenuItem value="Muscle Spasms">Muscle Spasms</MenuItem>
+          <MenuItem value="Inflammation">Inflammation</MenuItem>
+          <MenuItem value="Nausea">Nausea</MenuItem>
+
         </Select>
       </label>
         </Paper>
@@ -151,43 +148,24 @@ const NewRecommend = (props) => {
         <label>
         Effects:
         <Select value={recommendToEdit.effects1} onChange={onChangeHandler}>
-          <MenuItem value="effects">Grapefruit</MenuItem>
-          <MenuItem value="lime">Lime</MenuItem>
-          <MenuItem value="coconut">Coconut</MenuItem>
-          <MenuItem value="mango">Mango</MenuItem>
+          <MenuItem value="Relaxed">Relaxed</MenuItem>
+          <MenuItem value="Happy">Happy</MenuItem>
+          <MenuItem value="Euphoric">Euphoric</MenuItem>
+          <MenuItem value="Uplifted">Uplifted</MenuItem>
+          <MenuItem value="Sleepy">Sleepy</MenuItem>
+          <MenuItem value="Dry Mouth">Dry Mouth</MenuItem>
+          <MenuItem value="Focused">Focused</MenuItem>
+          <MenuItem value="Energetic">Energetic</MenuItem>
+          <MenuItem value="Paranoid">Paranoid</MenuItem>
+          <MenuItem value="Anxious">Anxious</MenuItem>
+          <MenuItem value="Hungry">Hungry</MenuItem>
+          <MenuItem value="Talkative">Talkative</MenuItem>
+          <MenuItem value="Creative">Creative</MenuItem>
         </Select>
       </label>
         </Paper>
       </Grid>
 
-      <Grid item xs={4}>
-        <Paper className={classes.paper}>
-        <label>
-        Effects:
-        <Select value={recommendToEdit.effects2} onChange={onChangeHandler}>
-          <MenuItem value="effects">Grapefruit</MenuItem>
-          <MenuItem value="lime">Lime</MenuItem>
-          <MenuItem value="coconut">Coconut</MenuItem>
-          <MenuItem value="mango">Mango</MenuItem>
-        </Select>
-      </label>
-        </Paper>
-      </Grid>
-
-      <Grid item xs={4}>
-        <Paper className={classes.paper}>
-        <label>
-        Effects:
-        <Select value={recommendToEdit.effects3} onChange={onChangeHandler}>
-          <MenuItem value="effects">Grapefruit</MenuItem>
-          <MenuItem value="grapefruit">Grapefruit</MenuItem>
-          <MenuItem value="lime">Lime</MenuItem>
-          <MenuItem value="coconut">Coconut</MenuItem>
-          <MenuItem value="mango">Mango</MenuItem>
-        </Select>
-      </label>
-        </Paper>
-      </Grid>
       </div>
 
       <Button variant="contained" color="primary" id="addButton" type="submit">
