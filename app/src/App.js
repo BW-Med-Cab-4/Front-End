@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
@@ -19,8 +19,7 @@ function App() {
   const userid = window.localStorage.getItem("id");
   const [recommendList, setRecommendList] = useState([
     {
-      id: "1",
-      userid: "1",
+      userid: userid,
       prediction: "",
       description: "",
       rating: "",
@@ -28,12 +27,25 @@ function App() {
   ]);
   const [userInput, setUserInput] = useState({
     // id: null,
-    userid: 2,
+    userid: userid,
     flavor: "gole",
     type: "jhk",
     ailment: "kj",
-    effect: "kj",
+    effect: "kji",
   });
+  useEffect(() => {
+    axiosWithAuth()
+      .get(`https://med-cab-user.herokuapp.com/api/inputs/${userid}`)
+      .then((res) => {
+        console.log(res);
+        res.data.length > 0
+          ? setUserInput(res.data[0])
+          : console.log("no data");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   const getData = () => {
     axiosWithAuth()
       .get(`https://med-cab-user.herokuapp.com/api/recommendations/${userid}`)
