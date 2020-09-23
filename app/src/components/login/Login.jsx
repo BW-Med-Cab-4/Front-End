@@ -35,7 +35,7 @@
 // export default Login;
 import React, { useState } from "react";
 import LoginForm from "./LoginForm";
-import axios from 'axios'
+import axios from "axios";
 
 const initialFormValues = {
   email: "",
@@ -59,6 +59,7 @@ function Login() {
       .then((res) => {
         // setUsers([...users, res.data]);
 
+        window.localStorage.setItem("id", res.data.id);
         localStorage.setItem("token", res.data.token);
         setFormValues(initialFormValues);
       })
@@ -67,7 +68,6 @@ function Login() {
       });
 
     setFormValues(initialFormValues);
-
   };
 
   return (

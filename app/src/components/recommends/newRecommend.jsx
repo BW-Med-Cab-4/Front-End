@@ -27,16 +27,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NewRecommend = (props) => {
-  const { userid, getData } = useContext(Context);
+  const { getData, recommendList, setRecommendList } = useContext(Context);
+  const userid = window.localStorage.getItem("id");
 
   const [recommendToEdit, setRecommendToEdit] = useState({
-    flavor: "",
-    types: "",
-    ailment: "",
-    effect: "",
-    prediction: "",
-    description: "",
-    raiting: "",
+    kind: "Hybrid",
+    ailment: "Insomnia",
+    effect: "Happy",
+    flavor: "Blueberry",
   });
 
   // Web API POST request
@@ -44,34 +42,40 @@ const NewRecommend = (props) => {
   const addNewRecommend = (e) => {
     e.preventDefault();
     axiosWithAuth()
-      .post(`https://med-cab-user.herokuapp.com/api/inputs`, {
-        userid: userid,
-        flavor: recommendToEdit.flavor,
-        type: recommendToEdit.type,
-        ailment: recommendToEdit.ailment,
-        effect: recommendToEdit.effect,
-      })
+      .post(`https://medical-cannabis.herokuapp.com/predict`, recommendToEdit)
       .then((res) => {
-        console.log("Added New Recommend", recommendToEdit);
-
-        getData();
+        console.log("Added New Recommend", res);
+        axiosWithAuth()
+          .post(`https://med-cab-user.herokuapp.com/api/recommendations`, {
+            userid: userid,
+            strain: res.data.prediction,
+            description: res.data.description,
+            rating: res.data.rating,
+          })
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+        // getData();
       })
       .catch((err) => {
         console.log(err);
-      })
-      .finally(() => {
-        setRecommendToEdit({
-          id: "1",
-          userid: "2",
-          flavor: "",
-          types: "",
-          ailment: "",
-          effect: "",
-          prediction: "",
-          description: "",
-          raiting: "",
-        });
       });
+    // .finally(() => {
+    //   setRecommendToEdit({
+    //     id: "1",
+    //     userid: "2",
+    //     flavor: "",
+    //     types: "",
+    //     ailment: "",
+    //     effect: "",
+    //     prediction: "",
+    //     description: "",
+    //     raiting: "",
+    //   });
+    // });
   };
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -112,8 +116,8 @@ const NewRecommend = (props) => {
                 <label>
                   Type:
                   <Select
-                    name="types"
-                    value={recommendToEdit.types}
+                    name="type"
+                    value={recommendToEdit.kind}
                     onChange={onChangeHandler}
                   >
                     <MenuItem value="">types</MenuItem>
@@ -130,10 +134,10 @@ const NewRecommend = (props) => {
                 <label>
                   Ailment:
                   <Select
-                    value={recommendToEdit.ailments}
+                    value={recommendToEdit.ailment}
                     onChange={onChangeHandler}
                   >
-                    <MenuItem value="ailments">Grapefruit</MenuItem>
+                    <MenuItem value="ailment">Grapefruit</MenuItem>
                     <MenuItem value="lime">Lime</MenuItem>
                     <MenuItem value="coconut">Coconut</MenuItem>
                     <MenuItem value="mango">Mango</MenuItem>
@@ -147,10 +151,10 @@ const NewRecommend = (props) => {
                 <label>
                   Effects:
                   <Select
-                    value={recommendToEdit.effects}
+                    value={recommendToEdit.effect}
                     onChange={onChangeHandler}
                   >
-                    <MenuItem value="effects">Grapefruit</MenuItem>
+                    <MenuItem value="effect">Grapefruit</MenuItem>
                     <MenuItem value="lime">Lime</MenuItem>
                     <MenuItem value="coconut">Coconut</MenuItem>
                     <MenuItem value="mango">Mango</MenuItem>

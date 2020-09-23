@@ -89,7 +89,7 @@ function SignUp() {
       .post("https://med-cab-user.herokuapp.com/api/auth/register", newUser)
       .then((res) => {
         setUsers([...users, res.data]);
-
+        window.localStorage.setItem("id", res.data.id);
         localStorage.setItem("token", res.data.token);
 
         setFormValues(initialFormValues);
