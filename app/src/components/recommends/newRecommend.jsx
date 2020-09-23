@@ -1,16 +1,16 @@
 import React, { useState, useContext } from "react";
-// import axiosWithAuth from "../../utils/axiosWithAuth";
-import axios from "axios";
+import axiosWithAuth from "../utils/axiosWithAuth";
 import { Context } from "../utils/Context";
 
+import EditRecommend from "./EditRecommend";
 // Material UI Imports
-import Button from '@material-ui/core/Button'
-import Select from '@material-ui/core/Select'
-import MenuItem from '@material-ui/core/MenuItem';
-import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import { makeStyles } from '@material-ui/core/styles';
+import Button from "@material-ui/core/Button";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
+import TextField from "@material-ui/core/TextField";
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,52 +18,75 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: theme.spacing(1),
-    textAlign: 'center',
+    textAlign: "center",
     color: theme.palette.text.secondary,
-    marginLeft: '0.8rem',
-    marginRight: '0.8rem',
-    marginTop: '2rem'
+    marginLeft: "0.8rem",
+    marginRight: "0.8rem",
+    marginTop: "2rem",
   },
 }));
 
-
-
 const NewRecommend = (props) => {
-  const { getData } = useContext(Context);
+  const { getData, recommendList, setRecommendList } = useContext(Context);
+  const userid = window.localStorage.getItem("id");
+
+  const { userInput, setUserInput } = useContext(Context);
 
   const [recommendToEdit, setRecommendToEdit] = useState({
-    id: "1",
-    user_id: "2",
-    title: "",
-    flavor: "",
-    types: "",
-    ailments: "",
-    effects1: "",
-    effects2: "",
-    effects3: "",
+    kind: "Hybrid",
+    ailment: "Insomnia",
+    effect: "Happy",
+    flavor: "Blueberry",
   });
 
   // Web API POST request
 
   const addNewRecommend = (e) => {
     e.preventDefault();
-    axios
-      .post(`https://reqres.in/api/users`, {})
+    axiosWithAuth()
+      .post(`https://medical-cannabis.herokuapp.com/predict`, recommendToEdit)
       .then((res) => {
-        console.log("Added New Recoomsend", res);
-        getData();
-        alert("New Recommend Added");
-      })
-      .catch((err) => {
-        console.log(err);
+        console.log("Added New Recommend", res);
+        axiosWithAuth()
+          .post(`https://med-cab-user.herokuapp.com/api/recommendations`, {
+            userid: userid,
+            strain: res.data.prediction,
+            description: res.data.description,
+            rating: res.data.rating,
+          })
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+        // getData();
+        console.log(userInput);
+        axiosWithAuth()
+          .post(`https://med-cab-user.herokuapp.com/api/inputs`, userInput)
+          .then((res) => {
+            console.log(res);
+          })
+
+          .catch((err) => {
+            console.log(err);
+          });
       });
   };
+  // .finally(() => {
   //   setRecommendToEdit({
-  //     title: recommendToEdit.title,
-  //     insomnia: recommendToEdit.insomnia,
+  //     id: "1",
+  //     userid: "2",
+  //     flavor: "",
+  //     types: "",
+  //     ailment: "",
+  //     effect: "",
+  //     prediction: "",
+  //     description: "",
+  //     raiting: "",
   //   });
-  //   console.log(recommendToEdit);
-  // };
+  // });
+
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setRecommendToEdit({
@@ -76,6 +99,7 @@ const NewRecommend = (props) => {
   const classes = useStyles();
 
   return (
+
 
     <div className="newRecommend">
     <h3>How do you feel today?</h3>
@@ -166,17 +190,10 @@ const NewRecommend = (props) => {
         </Paper>
       </Grid>
 
+
       </div>
-
-      <Button variant="contained" color="primary" id="addButton" type="submit">
-        Add Recommend
-      </Button>
-
-    </form>
-
-  </div>
+    </div>
   );
-  
 };
 
 export default NewRecommend;

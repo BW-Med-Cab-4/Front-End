@@ -9,6 +9,7 @@ const Recommends = () => {
   const { recommendList, getData } = useContext(Context);
 
   useEffect(() => {
+    console.log(recommendList);
     getData();
   }, []);
   return (
