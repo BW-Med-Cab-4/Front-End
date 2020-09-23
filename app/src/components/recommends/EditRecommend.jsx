@@ -1,50 +1,55 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import { Context } from "../utils/Context";
 
 const EditRecommend = (props) => {
-  const { userid, getData } = useContext(Context);
-
-  const [recommendToEdit, setRecommendToEdit] = useState({
-    id: "1",
-    userid: "2",
-    flavor: "",
-    type: "",
-    ailment: "",
-    effect: "",
-  });
+  const { userid, getData, userInput, setUserInput } = useContext(Context);
 
   // Web API PUT request
+  useEffect(() => {
+    axiosWithAuth()
+      .get(`https://med-cab-user.herokuapp.com/api/inputs/${userid}`)
+      .then((res) => {
+        // console.log(res);
+        res.data.length > 0 ? setUserInput(res.data) : console.log("no data");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   const editRecommend = (e, id) => {
     e.preventDefault();
-    axiosWithAuth()
-      .put(`https://med-cab-user.herokuapp.com/api/inputs${id}`, {
-        userid: userid,
-        effect: recommendToEdit.effect,
-        ailment: recommendToEdit.ailment,
-        flavor: recommendToEdit.flavor,
-        type: recommendToEdit.type,
-      })
-      .then((res) => {
-        // console.log("Recommend Changed", res);
-        console.log(recommendToEdit);
-        setRecommendToEdit({
-          userid: userid,
-          effect: recommendToEdit.effect,
-          ailment: recommendToEdit.ailment,
-          flavor: recommendToEdit.flavor,
-          type: recommendToEdit.type,
-        });
-      });
+    userInput.id
+      ? axiosWithAuth()
+          .put(`https://med-cab-user.herokuapp.com/api/inputs/${id}`, {
+            userid: userid,
+            effect: userInput.effect,
+            ailment: userInput.ailment,
+            flavor: userInput.flavor,
+            type: userInput.type,
+          })
+          .then((res) => {
+            // console.log("Recommend Changed", res);
+
+            setUserInput({
+              userid: userid,
+              effect: userInput.effect,
+              ailment: userInput.ailment,
+              flavor: userInput.flavor,
+              type: userInput.type,
+            });
+            console.log(userInput);
+          })
+      : console.log("no id");
   };
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
-    setRecommendToEdit({
-      ...recommendToEdit,
+    setUserInput({
+      ...userInput,
       [name]: value,
     });
-    console.log(recommendToEdit);
+    console.log(userInput);
   };
 
   return (
@@ -53,7 +58,7 @@ const EditRecommend = (props) => {
       <form>
         <label>
           Favorite Flavor:
-          <select value={recommendToEdit.flavor} onChange={onChangeHandler}>
+          <select value={userInput.flavor} onChange={onChangeHandler}>
             <option value="grapefruit">Grapefruit</option>
             <option value="lime">Lime</option>
             <option value="coconut">Coconut</option>
@@ -64,7 +69,7 @@ const EditRecommend = (props) => {
           Type:
           <select
             name="types"
-            value={recommendToEdit.type}
+            value={userInput.type}
             onChange={onChangeHandler}
           >
             <option value="">types</option>
@@ -75,7 +80,7 @@ const EditRecommend = (props) => {
         </label>
         <label>
           Ailment:
-          <select value={recommendToEdit.ailment} onChange={onChangeHandler}>
+          <select value={userInput.ailment} onChange={onChangeHandler}>
             <option value="ailments">Grapefruit</option>
             <option value="lime">Lime</option>
             <option value="coconut">Coconut</option>
@@ -84,7 +89,7 @@ const EditRecommend = (props) => {
         </label>
         <label>
           Effects:
-          <select value={recommendToEdit.effects} onChange={onChangeHandler}>
+          <select value={userInput.effects} onChange={onChangeHandler}>
             <option value="effects">Grapefruit</option>
             <option value="lime">Lime</option>
             <option value="coconut">Coconut</option>
@@ -93,7 +98,7 @@ const EditRecommend = (props) => {
         </label>
 
         <button id="editbutton" onClick={(e) => editRecommend(e, props.id)}>
-          Submit
+          Edit this
         </button>
       </form>
     </div>

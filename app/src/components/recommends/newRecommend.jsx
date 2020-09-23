@@ -30,6 +30,8 @@ const NewRecommend = (props) => {
   const { getData, recommendList, setRecommendList } = useContext(Context);
   const userid = window.localStorage.getItem("id");
 
+  const { userInput, setUserInput } = useContext(Context);
+
   const [recommendToEdit, setRecommendToEdit] = useState({
     kind: "Hybrid",
     ailment: "Insomnia",
@@ -59,24 +61,32 @@ const NewRecommend = (props) => {
             console.log(err);
           });
         // getData();
-      })
-      .catch((err) => {
-        console.log(err);
+        console.log(userInput);
+        axiosWithAuth()
+          .post(`https://med-cab-user.herokuapp.com/api/inputs`, userInput)
+          .then((res) => {
+            console.log(res);
+          })
+
+          .catch((err) => {
+            console.log(err);
+          });
       });
-    // .finally(() => {
-    //   setRecommendToEdit({
-    //     id: "1",
-    //     userid: "2",
-    //     flavor: "",
-    //     types: "",
-    //     ailment: "",
-    //     effect: "",
-    //     prediction: "",
-    //     description: "",
-    //     raiting: "",
-    //   });
-    // });
   };
+  // .finally(() => {
+  //   setRecommendToEdit({
+  //     id: "1",
+  //     userid: "2",
+  //     flavor: "",
+  //     types: "",
+  //     ailment: "",
+  //     effect: "",
+  //     prediction: "",
+  //     description: "",
+  //     raiting: "",
+  //   });
+  // });
+
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setRecommendToEdit({

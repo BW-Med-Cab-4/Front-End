@@ -3,7 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import "./App.css";
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+// import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Nav from "./components/Nav";
 import "./App.css";
 
@@ -26,6 +26,14 @@ function App() {
       rating: "",
     },
   ]);
+  const [userInput, setUserInput] = useState({
+    // id: null,
+    userid: 2,
+    flavor: "gole",
+    type: "jhk",
+    ailment: "kj",
+    effect: "kj",
+  });
   const getData = () => {
     axiosWithAuth()
       .get(`https://med-cab-user.herokuapp.com/api/recommendations/${userid}`)
@@ -47,7 +55,15 @@ function App() {
     <Router>
       <Nav />
       <Context.Provider
-        value={{ userid, recommendList, setRecommendList, getData, logOut }}
+        value={{
+          userid,
+          recommendList,
+          setRecommendList,
+          userInput,
+          setUserInput,
+          getData,
+          logOut,
+        }}
       >
         <div className="App">
           <PrivateRoute path="/Dashboard" component={Dashboard} />
