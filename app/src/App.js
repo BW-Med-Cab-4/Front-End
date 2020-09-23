@@ -3,7 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Nav from './Nav';
 import './App.css';
-// import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 import Dashboard from "./components/Dashboard";
 import PrivateRoute from "./components/utils/PrivateRoute";
@@ -53,9 +53,16 @@ function App() {
       >
         <div className="App">
           <PrivateRoute path="/Dashboard" component={Dashboard} />
+          <div className="auth-wrapper">
+          <div className="auth-inner">
           <Route path="/Login" component={Login} />
           <Route exact path="/" component={SignUp} />
+          </div>
+          </div>
+        
         </div>
+
+
       </Context.Provider>
     </Router>
     // <Router>
