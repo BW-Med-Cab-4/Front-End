@@ -75,7 +75,7 @@ function App() {
           <PrivateRoute path="/Dashboard" component={Dashboard} />
 
           <Route exact path="/Login" component={Login} />
-          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/" component={SignUp} />
         </div>
       </Context.Provider>
     </Router>
