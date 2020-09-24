@@ -93,13 +93,15 @@ function SignUp() {
   };
 
   return (
-    <div>
-      <SignUpForm
-        errors={formErrors}
-        values={formValues}
-        onChange={onInputChange}
-        onSubmit={onSubmit}
-      />
+    <div className="auth-wrapper">
+      <div className="auth-inner">
+        <SignUpForm
+          errors={formErrors}
+          values={formValues}
+          onChange={onInputChange}
+          onSubmit={onSubmit}
+        />
+      </div>
     </div>
   );
 }

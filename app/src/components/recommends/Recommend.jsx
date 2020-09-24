@@ -32,14 +32,12 @@ function Recommend(props) {
   const { recommend } = props;
   const { userInput, setUserInput, getData, userid } = useContext(Context);
   const [editing, setEditing] = useState(false);
+
   const editRecommended = (e) => {
     e.preventDefault();
     axiosWithAuth()
       .post(`https://medical-cannabis.herokuapp.com/predict`, {
-        kind: "Hybrid",
         ailment: "Insomnia",
-        effect: "Happy",
-        flavor: "Blueberry",
       })
       .then((res) => {
         console.log("Added New Recommend", res);
@@ -104,6 +102,7 @@ function Recommend(props) {
         getData();
       })
       .catch((err) => {
+        getData();
         console.log(err);
       });
   };
@@ -125,7 +124,7 @@ function Recommend(props) {
           <p>
             <span>Rating:</span> {recommend.rating}
           </p>
-          <p>number: {recommend.flavor}</p>
+          <p>number: {recommend.id}</p>
           <p>number: {recommend.effect}</p>
           <button onClick={() => setEditing(true)}>EDIT</button>
           {editing && (

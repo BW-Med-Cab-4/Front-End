@@ -28,13 +28,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NewRecommend = (props) => {
-  const { userInput, setUserInput } = useContext(Context);
+  const { userInput, setUserInput, getData } = useContext(Context);
   const userid = window.localStorage.getItem("id");
 
   // Web API POST request
 
   const addNewRecommend = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     axiosWithAuth()
       .post(`https://medical-cannabis.herokuapp.com/predict`, userInput)
       .then((res) => {
@@ -50,6 +50,7 @@ const NewRecommend = (props) => {
           })
           .then((res) => {
             console.log(res);
+            getData();
           })
           .catch((err) => {
             console.log(err);
@@ -65,6 +66,7 @@ const NewRecommend = (props) => {
               .then((res) => {
                 console.log("it worked", res);
                 // res.data.length > 0 ? setUserInput(res.data) : console.log("no data");
+                getData();
               })
               .catch((err) => {
                 console.log(err);
@@ -78,26 +80,27 @@ const NewRecommend = (props) => {
                 console.log(err);
               });
       });
+    getData();
   };
-  const editRecommend = (e) => {
-    // e.preventDefault();
-    userInput.id
-      ? axiosWithAuth()
-          .put(
-            `https://med-cab-user.herokuapp.com/api/inputs/${userInput.id}`,
-            {
-              userid: userid,
-              ailment: userInput.ailment,
-            }
-          )
-          .then((res) => {
-            console.log("Recommend Changed", res);
+  // const editRecommend = (e) => {
+  //   e.preventDefault();
+  //   userInput.id
+  //     ? axiosWithAuth()
+  //         .put(
+  //           `https://med-cab-user.herokuapp.com/api/inputs/${userInput.id}`,
+  //           {
+  //             userid: userid,
+  //             ailment: userInput.ailment,
+  //           }
+  //         )
+  //         .then((res) => {
+  //           console.log("Recommend Changed", res);
 
-            setUserInput(res.data.userInput);
-            console.log(userInput);
-          })
-      : console.log("no id");
-  };
+  //           setUserInput(res.data.userInput);
+  //           console.log(userInput);
+  //         })
+  //     : console.log("no id");
+  // };
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setUserInput({
@@ -130,14 +133,14 @@ const NewRecommend = (props) => {
             </Paper>
           </Grid>
           <Button onClick={(e) => addNewRecommend(e)}>submit</Button>
-          <Button
+          {/* <Button
             variant="contained"
             color="primary"
             id="editButton"
             onClick={(e) => editRecommend(e)}
           >
             Edit this Edit
-          </Button>
+          </Button> */}
           {/* <Grid item xs={4}>
             <Paper className={classes.paper}>
               <label>

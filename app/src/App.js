@@ -46,10 +46,8 @@ function App() {
     axiosWithAuth()
       .get(`https://med-cab-user.herokuapp.com/api/recommendations/${userid}`)
       .then((res) => {
-        // console.log(res);
-        res.data.length > 0
-          ? setRecommendList(res.data)
-          : console.log("no data");
+        console.log(res);
+        res.data.length > 0 ? setRecommendList(res.data) : setRecommendList({});
       })
       .catch((err) => {
         console.log(err);
@@ -75,12 +73,9 @@ function App() {
       >
         <div className="App">
           <PrivateRoute path="/Dashboard" component={Dashboard} />
-          <div className="auth-wrapper">
-            <div className="auth-inner">
-              <Route path="/Login" component={Login} />
-              <Route exact path="/" component={SignUp} />
-            </div>
-          </div>
+
+          <Route exact path="/Login" component={Login} />
+          <Route exact path="/signup" component={SignUp} />
         </div>
       </Context.Provider>
     </Router>

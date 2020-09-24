@@ -9,9 +9,9 @@ const Recommends = () => {
   const { recommendList, getData } = useContext(Context);
 
   useEffect(() => {
-    // console.log(recommendList);
+    console.log(recommendList);
     getData();
-  }, [recommendList]);
+  }, []);
   return (
     <div>
       {/* map through the recommends here to return a Post component */}
