@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import { Context } from "../utils/Context";
+import "./styles.css";
 
 // Material UI Imports
 
@@ -114,39 +115,38 @@ const NewRecommend = (props) => {
     <div className="newRecommend">
       <h3 id="howDoYouFeelHeader">How do you feel today?</h3>
       <form>
-
         <div className="formSubmissionContainer">
-          
-              <input 
+          <input name="input" value={userInput.input} />
 
-                name="input"
-                value={userInput.input}
-
-        <div className="menuItemContainer">
-          <Grid item xs={4}>
-            <Paper className={classes.paper}>
-              <input
-                name="ailment"
-                value={userInput.ailment}
-
-                onChange={onChangeHandler}
-                type="text"
-              />
-              {/* <TextField
+          <div className="menuItemContainer">
+            <Grid item xs={4}>
+              <Paper className={classes.paper}>
+                <input
+                  name="ailment"
+                  value={userInput.ailment}
+                  onChange={onChangeHandler}
+                  type="text"
+                />
+                {/* <TextField
                 placeholder={userInput.input}
                 id="filled-basic"
                 label="Type Here"
                 variant="filled"
                 onChange={onChangeHandler}
               /> */}
+              </Paper>
+            </Grid>
+            <div id="submitEditButtonContainer">
+              <Button
+                color="primary"
+                variant="contained"
+                onClick={(e) => addNewRecommend(e)}
+              >
+                submit
+              </Button>
 
-          <div id="submitEditButtonContainer">
-          <Button color="primary" variant="contained" onClick={(e) => addNewRecommend(e)}>submit</Button>
-          <Button
-            </Paper>
-          </Grid>
-          <Button onClick={(e) => addNewRecommend(e)}>submit</Button>
-          {/* <Button
+              <Button onClick={(e) => addNewRecommend(e)}>submit</Button>
+              {/* <Button
 
             variant="contained"
             color="secondary"
@@ -160,7 +160,7 @@ const NewRecommend = (props) => {
 
             Edit this Edit
           </Button> */}
-          {/* <Grid item xs={4}>
+              {/* <Grid item xs={4}>
             <Paper className={classes.paper}>
               <label>
                 Favorite Flavor:
@@ -252,8 +252,10 @@ const NewRecommend = (props) => {
             </Paper>
           </Grid>
            */}
-
+            </div>
+          </div>
         </div>
+        y
       </form>
     </div>
   );

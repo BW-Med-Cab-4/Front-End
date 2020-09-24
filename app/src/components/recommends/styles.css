@@ -1,0 +1,48 @@
+.menuItemContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  align-items: center;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.formSubmissionContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  align-items: center;
+  justify-content: center;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+.editDeleteButtonContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.newRecommend {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#submitEditButtonContainer {
+  display: flex;
+  width: 105%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 10%;
+}
+.newRecommend {
+  background-image: url("https://images.unsplash.com/photo-1472289065668-ce650ac443d2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
