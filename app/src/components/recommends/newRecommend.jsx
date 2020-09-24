@@ -34,8 +34,7 @@ const NewRecommend = (props) => {
   // Web API POST request
 
   const addNewRecommend = (e) => {
-    e.preventDefault();
-
+    // e.preventDefault();
     axiosWithAuth()
       .post(`https://medical-cannabis.herokuapp.com/predict`, userInput)
       .then((res) => {
@@ -81,7 +80,7 @@ const NewRecommend = (props) => {
       });
   };
   const editRecommend = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     userInput.id
       ? axiosWithAuth()
           .put(
@@ -116,8 +115,8 @@ const NewRecommend = (props) => {
           <Grid item xs={4}>
             <Paper className={classes.paper}>
               <input
-                name="input"
-                value={userInput.input}
+                name="ailment"
+                value={userInput.ailment}
                 onChange={onChangeHandler}
                 type="text"
               />

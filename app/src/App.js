@@ -46,7 +46,7 @@ function App() {
     axiosWithAuth()
       .get(`https://med-cab-user.herokuapp.com/api/recommendations/${userid}`)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         res.data.length > 0
           ? setRecommendList(res.data)
           : console.log("no data");
@@ -84,16 +84,6 @@ function App() {
         </div>
       </Context.Provider>
     </Router>
-    // <Router>
-    //   <Context.Provider
-    //     value={{ userid, recommendList, setRecommendList, getData, logOut }}
-    //   >
-    //     <div className="App">
-    //       <Route exact path="/" component={SignUP} />
-    //     </div>
-    //   </Context.Provider>
-    //   //{" "}
-    // </Router>
   );
 }
 
