@@ -11,7 +11,7 @@ const Recommends = () => {
   useEffect(() => {
     console.log(recommendList);
     getData();
-  }, [recommendList]);
+  }, []);
   return (
     <div>
       {/* map through the recommends here to return a Post component */}

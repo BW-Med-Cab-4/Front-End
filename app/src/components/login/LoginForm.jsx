@@ -42,6 +42,7 @@ function LoginForm(props) {
 
   return (
     <form onSubmit={onSubmit}>
+      <h3>Log In</h3>
       <div className="form-group">
         <label>Email</label>
         <input

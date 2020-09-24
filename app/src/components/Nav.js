@@ -8,7 +8,7 @@ function Nav() {
         <ul className="navbar">
           <li className="nav-item">
             {/* <Link to = "/"> Home </Link> */}
-            <a href="https://quirky-hamilton-536fbc.netlify.app/"> Home </a>
+            <a href="https://dazzling-cori-82e5f3.netlify.app/"> Home </a>
           </li>
           <li className="nav-item">
             <Link to="/login"> Login</Link>

@@ -40,12 +40,14 @@ function Login() {
   };
 
   return (
-    <div>
-      <LoginForm
-        values={formValues}
-        onChange={onInputChange}
-        onSubmit={onSubmit}
-      />
+    <div className="auth-wrapper">
+      <div className="auth-inner">
+        <LoginForm
+          values={formValues}
+          onChange={onInputChange}
+          onSubmit={onSubmit}
+        />
+      </div>
     </div>
   );
 }

@@ -3,7 +3,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import "./App.css";
-// import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Nav from "./components/Nav";
 import "./App.css";
 
@@ -27,7 +27,7 @@ function App() {
   ]);
   const [userInput, setUserInput] = useState({
     // id: null,
-    input: "hello",
+    ailment: "hello",
   });
   useEffect(() => {
     axiosWithAuth()
@@ -47,9 +47,7 @@ function App() {
       .get(`https://med-cab-user.herokuapp.com/api/recommendations/${userid}`)
       .then((res) => {
         console.log(res);
-        res.data.length > 0
-          ? setRecommendList(res.data)
-          : console.log("no data");
+        res.data.length > 0 ? setRecommendList(res.data) : setRecommendList({});
       })
       .catch((err) => {
         console.log(err);
@@ -75,25 +73,12 @@ function App() {
       >
         <div className="App">
           <PrivateRoute path="/Dashboard" component={Dashboard} />
-          <div className="auth-wrapper">
-            <div className="auth-inner">
-              <Route path="/Login" component={Login} />
-              <Route exact path="/" component={SignUp} />
-            </div>
-          </div>
+
+          <Route exact path="/Login" component={Login} />
+          <Route exact path="/" component={SignUp} />
         </div>
       </Context.Provider>
     </Router>
-    // <Router>
-    //   <Context.Provider
-    //     value={{ userid, recommendList, setRecommendList, getData, logOut }}
-    //   >
-    //     <div className="App">
-    //       <Route exact path="/" component={SignUP} />
-    //     </div>
-    //   </Context.Provider>
-    //   //{" "}
-    // </Router>
   );
 }
 
