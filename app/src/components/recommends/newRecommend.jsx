@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import { Context } from "../utils/Context";
-import "./styles.css";
+import "../styles/recommendstyles.css";
 
 // Material UI Imports
 

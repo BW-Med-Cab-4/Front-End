@@ -3,6 +3,7 @@ import * as yup from "yup";
 import formSchema from "./FormSchema";
 import SignUpForm from "./SignUpForm";
 import axiosWithAuth from "../utils/axiosWithAuth";
+import "../styles/signupstyles.css";
 
 import { useHistory } from "react-router-dom";
 
