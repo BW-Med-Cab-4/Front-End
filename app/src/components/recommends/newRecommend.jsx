@@ -112,14 +112,23 @@ const NewRecommend = (props) => {
 
   return (
     <div className="newRecommend">
-      <h3>How do you feel today?</h3>
+      <h3 id="howDoYouFeelHeader">How do you feel today?</h3>
       <form>
+
+        <div className="formSubmissionContainer">
+          
+              <input 
+
+                name="input"
+                value={userInput.input}
+
         <div className="menuItemContainer">
           <Grid item xs={4}>
             <Paper className={classes.paper}>
               <input
                 name="ailment"
                 value={userInput.ailment}
+
                 onChange={onChangeHandler}
                 type="text"
               />
@@ -130,15 +139,25 @@ const NewRecommend = (props) => {
                 variant="filled"
                 onChange={onChangeHandler}
               /> */}
+
+          <div id="submitEditButtonContainer">
+          <Button color="primary" variant="contained" onClick={(e) => addNewRecommend(e)}>submit</Button>
+          <Button
             </Paper>
           </Grid>
           <Button onClick={(e) => addNewRecommend(e)}>submit</Button>
           {/* <Button
+
             variant="contained"
-            color="primary"
+            color="secondary"
             id="editButton"
             onClick={(e) => editRecommend(e)}
           >
+
+            Edit
+          </Button>
+          </div>
+
             Edit this Edit
           </Button> */}
           {/* <Grid item xs={4}>
@@ -233,6 +252,7 @@ const NewRecommend = (props) => {
             </Paper>
           </Grid>
            */}
+
         </div>
       </form>
     </div>
