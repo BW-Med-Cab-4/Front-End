@@ -18,20 +18,16 @@ import { Context } from "./components/utils/Context";
 function App() {
   const userid = window.localStorage.getItem("id");
   const [recommendList, setRecommendList] = useState([
-    {
-      userid: userid,
-      prediction: "",
-      description: "",
-      rating: "",
-    },
+    // {
+    //   userid: userid,
+    //   prediction: "",
+    //   description: "",
+    //   rating: "",
+    // },
   ]);
   const [userInput, setUserInput] = useState({
     // id: null,
-    userid: userid,
-    flavor: "gole",
-    type: "jhk",
-    ailment: "kj",
-    effect: "kji",
+    input: "hello",
   });
   useEffect(() => {
     axiosWithAuth()

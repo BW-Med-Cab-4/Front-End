@@ -6,7 +6,9 @@ import { Context } from "../utils/Context";
 
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
-
+import TextField from "@material-ui/core/TextField";
+import Card from "@material-ui/core/Card";
+import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
@@ -33,13 +35,9 @@ const NewRecommend = (props) => {
 
   const addNewRecommend = (e) => {
     e.preventDefault();
+
     axiosWithAuth()
-      .post(`https://medical-cannabis.herokuapp.com/predict`, {
-        kind: "Hybrid",
-        ailment: "Insomnia",
-        effect: "Happy",
-        flavor: "Blueberry",
-      })
+      .post(`https://medical-cannabis.herokuapp.com/predict`, userInput)
       .then((res) => {
         console.log("Added New Recommend", res);
         axiosWithAuth()
@@ -48,6 +46,8 @@ const NewRecommend = (props) => {
             strain: res.data.prediction,
             description: res.data.description,
             rating: res.data.rating,
+            effect: res.data.effect,
+            flavor: res.data.flavor,
           })
           .then((res) => {
             console.log(res);
@@ -80,6 +80,25 @@ const NewRecommend = (props) => {
               });
       });
   };
+  const editRecommend = (e) => {
+    e.preventDefault();
+    userInput.id
+      ? axiosWithAuth()
+          .put(
+            `https://med-cab-user.herokuapp.com/api/inputs/${userInput.id}`,
+            {
+              userid: userid,
+              input: userInput.input,
+            }
+          )
+          .then((res) => {
+            console.log("Recommend Changed", res);
+
+            setUserInput(res.data.userInput);
+            console.log(userInput);
+          })
+      : console.log("no id");
+  };
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setUserInput({
@@ -92,9 +111,35 @@ const NewRecommend = (props) => {
   return (
     <div className="newRecommend">
       <h3>How do you feel today?</h3>
-      <form onSubmit={addNewRecommend}>
+      <form>
         <div className="menuItemContainer">
           <Grid item xs={4}>
+            <Paper className={classes.paper}>
+              <input
+                name="input"
+                value={userInput.input}
+                onChange={onChangeHandler}
+                type="text"
+              />
+              {/* <TextField
+                placeholder={userInput.input}
+                id="filled-basic"
+                label="Type Here"
+                variant="filled"
+                onChange={onChangeHandler}
+              /> */}
+            </Paper>
+          </Grid>
+          <Button onClick={(e) => addNewRecommend(e)}>submit</Button>
+          <Button
+            variant="contained"
+            color="primary"
+            id="editButton"
+            onClick={(e) => editRecommend(e)}
+          >
+            Edit this Edit
+          </Button>
+          {/* <Grid item xs={4}>
             <Paper className={classes.paper}>
               <label>
                 Favorite Flavor:
@@ -185,7 +230,7 @@ const NewRecommend = (props) => {
               </label>
             </Paper>
           </Grid>
-          <button>submit</button>
+           */}
         </div>
       </form>
     </div>
