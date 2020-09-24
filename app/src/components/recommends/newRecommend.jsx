@@ -88,7 +88,7 @@ const NewRecommend = (props) => {
             `https://med-cab-user.herokuapp.com/api/inputs/${userInput.id}`,
             {
               userid: userid,
-              input: userInput.input,
+              ailment: userInput.ailment,
             }
           )
           .then((res) => {

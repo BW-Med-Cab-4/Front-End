@@ -27,7 +27,7 @@ function App() {
   ]);
   const [userInput, setUserInput] = useState({
     // id: null,
-    input: "hello",
+    ailment: "hello",
   });
   useEffect(() => {
     axiosWithAuth()
@@ -77,7 +77,7 @@ function App() {
           <PrivateRoute path="/Dashboard" component={Dashboard} />
           <div className="auth-wrapper">
             <div className="auth-inner">
-              <Route path="/Login" component={Login} />
+              <Route path="/login" component={Login} />
               <Route exact path="/" component={SignUp} />
             </div>
           </div>
