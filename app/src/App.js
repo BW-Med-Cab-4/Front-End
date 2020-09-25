@@ -27,7 +27,7 @@ function App() {
   ]);
   const [userInput, setUserInput] = useState({
     // id: null,
-    ailment: "hello",
+    ailment: "I'm feeling...",
   });
   useEffect(() => {
     axiosWithAuth()

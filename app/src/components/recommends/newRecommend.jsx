@@ -116,33 +116,29 @@ const NewRecommend = (props) => {
       <h3 id="howDoYouFeelHeader">How do you feel today?</h3>
       <form>
         <div className="formSubmissionContainer">
-          <input name="input" value={userInput.input} />
-
           <div className="menuItemContainer">
-            <Grid item xs={4}>
-              <Paper className={classes.paper}>
-                <input
-                  name="ailment"
-                  value={userInput.ailment}
-                  onChange={onChangeHandler}
-                  type="text"
-                />
-              </Paper>
-            </Grid>
-            <div id="submitEditButtonContainer">
-              <Button
-                color="primary"
-                variant="contained"
-                onClick={(e) => addNewRecommend(e)}
-              >
-                submit
-              </Button>
-
-              <Button onClick={(e) => addNewRecommend(e)}>submit</Button>
-            </div>
+            <input
+              size="100"
+              name="ailment"
+              value={userInput.ailment}
+              onChange={onChangeHandler}
+              type="text"
+            />
           </div>
         </div>
-        y
+        <div id="submitEditButtonContainer">
+          <Button
+            color="primary"
+            variant="contained"
+            onClick={(e) => addNewRecommend(e)}
+          >
+            submit
+          </Button>
+
+          <Button onClick={(e) => addNewRecommend(e)}>submit</Button>
+
+          <p>Example: "I'm feeling anxious and tired."</p>
+        </div>
       </form>
     </div>
   );
