@@ -18,7 +18,7 @@ function Recommend(props) {
         ailment: userInput.ailment,
       })
       .then((res) => {
-        console.log("Added New Recommends", res);
+        console.log(recommend, "reses");
         setEditing(false);
         axiosWithAuth()
           .put(
@@ -28,6 +28,8 @@ function Recommend(props) {
               strain: res.data.prediction,
               description: res.data.description,
               rating: res.data.rating,
+              effect: res.data.effects,
+              flavor: res.data.flavors,
             }
           )
           .then((res) => {

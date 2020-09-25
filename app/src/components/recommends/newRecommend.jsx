@@ -24,8 +24,8 @@ const NewRecommend = (props) => {
             strain: res.data.prediction,
             description: res.data.description,
             rating: res.data.rating,
-            effect: res.data.effect,
-            flavor: res.data.flavor,
+            effect: res.data.effects,
+            flavor: res.data.flavors,
           })
           .then((res) => {
             console.log(res);
@@ -92,9 +92,6 @@ const NewRecommend = (props) => {
           >
             submit
           </Button>
-
-          <Button onClick={(e) => addNewRecommend(e)}>submit</Button>
-
           <p>Example: "I'm feeling anxious and tired."</p>
         </div>
       </form>
