@@ -4,29 +4,7 @@ import { Context } from "../utils/Context";
 import "../styles/recommendstyles.css";
 
 // Material UI Imports
-
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
-import TextField from "@material-ui/core/TextField";
-import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(1),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-    marginLeft: "0.8rem",
-    marginRight: "0.8rem",
-    marginTop: "2rem",
-  },
-}));
 
 const NewRecommend = (props) => {
   const { userInput, setUserInput, getData } = useContext(Context);
@@ -83,25 +61,6 @@ const NewRecommend = (props) => {
       });
     getData();
   };
-  // const editRecommend = (e) => {
-  //   e.preventDefault();
-  //   userInput.id
-  //     ? axiosWithAuth()
-  //         .put(
-  //           `https://med-cab-user.herokuapp.com/api/inputs/${userInput.id}`,
-  //           {
-  //             userid: userid,
-  //             ailment: userInput.ailment,
-  //           }
-  //         )
-  //         .then((res) => {
-  //           console.log("Recommend Changed", res);
-
-  //           setUserInput(res.data.userInput);
-  //           console.log(userInput);
-  //         })
-  //     : console.log("no id");
-  // };
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setUserInput({
@@ -109,7 +68,6 @@ const NewRecommend = (props) => {
       [name]: value,
     });
   };
-  const classes = useStyles();
 
   return (
     <div className="newRecommend">
