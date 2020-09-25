@@ -48,7 +48,7 @@ function Recommend(props) {
                 userInput
               )
               .then((res) => {
-                console.log("it worked", res);
+                console.log("it works", res);
                 // res.data.length > 0 ? setUserInput(res.data) : console.log("no data");
               })
               .catch((err) => {
