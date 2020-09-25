@@ -41,7 +41,7 @@ function Recommend(props) {
         ailment: "Insomnia",
       })
       .then((res) => {
-        console.log("Added New Recommend", res);
+        console.log("Added New Recommends", res);
         axiosWithAuth()
           .put(
             `https://med-cab-user.herokuapp.com/api/recommendations/${recommend.id}`,
