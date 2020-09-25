@@ -116,12 +116,12 @@ const NewRecommend = (props) => {
       <h3 id="howDoYouFeelHeader">How do you feel today?</h3>
       <form>
         <div className="formSubmissionContainer">
-          <input name="input" value={userInput.input} />
+          {/* <input name="input" value={userInput.input} /> */}
 
           <div className="menuItemContainer">
-            <Grid item xs={4}>
-              <Paper className={classes.paper}>
+
                 <input
+                  size="100"
                   name="ailment"
                   value={userInput.ailment}
                   onChange={onChangeHandler}
@@ -134,8 +134,7 @@ const NewRecommend = (props) => {
                 variant="filled"
                 onChange={onChangeHandler}
               /> */}
-              </Paper>
-            </Grid>
+
             <div id="submitEditButtonContainer">
               <Button
                 color="primary"
@@ -144,118 +143,11 @@ const NewRecommend = (props) => {
               >
                 submit
               </Button>
-
-              <Button onClick={(e) => addNewRecommend(e)}>submit</Button>
-              {/* <Button
-
-            variant="contained"
-            color="secondary"
-            id="editButton"
-            onClick={(e) => editRecommend(e)}
-          >
-
-            Edit
-          </Button>
-          </div>
-
-            Edit this Edit
-          </Button> */}
-              {/* <Grid item xs={4}>
-            <Paper className={classes.paper}>
-              <label>
-                Favorite Flavor:
-                <Select
-                  name="flavor"
-                  value={userInput.flavor}
-                  onChange={onChangeHandler}
-                >
-                  <MenuItem value="Citrus">Citrus</MenuItem>
-                  <MenuItem value="Sweet">Sweet</MenuItem>
-                  <MenuItem value="Earthy">Earthy</MenuItem>
-                  <MenuItem value="Skunk">Skunk</MenuItem>
-                  <MenuItem value="Berry">Berry</MenuItem>
-                  <MenuItem value="Lemon">Lemon</MenuItem>
-                  <MenuItem value="Lime">Lime</MenuItem>
-                  <MenuItem value="Blueberry">Blueberry</MenuItem>
-                  <MenuItem value="Strawberry">Strawberry</MenuItem>
-                  <MenuItem value="Mango">Mango</MenuItem>
-                  <MenuItem value="Rose">Rose</MenuItem>
-                  <MenuItem value="Pepper">Pepper</MenuItem>
-                </Select>
-              </label>
-            </Paper>
-          </Grid>
-
-          <Grid item xs={4}>
-            <Paper className={classes.paper}>
-              <label>
-                Type:
-                <Select
-                  name="type"
-                  value={userInput.type}
-                  onChange={onChangeHandler}
-                >
-                  <MenuItem value="Sativa">Sativa</MenuItem>
-                  <MenuItem value="Indica">Indica</MenuItem>
-                  <MenuItem value="Hybrid">Hybrid</MenuItem>
-                </Select>
-              </label>
-            </Paper>
-          </Grid>
-
-          <Grid item xs={4}>
-            <Paper className={classes.paper}>
-              <label>
-                Ailment:
-                <Select
-                  name="ailment"
-                  value={userInput.ailment}
-                  onChange={onChangeHandler}
-                >
-                  <MenuItem value="Depression">Depression</MenuItem>
-                  <MenuItem value="Pain">Pain</MenuItem>
-                  <MenuItem value="Insomnia">Insomnia</MenuItem>
-                  <MenuItem value="Stress">Stress</MenuItem>
-                  <MenuItem value="Lack of Appetite">Lack of Appetite</MenuItem>
-                  <MenuItem value="Muscle Spasms">Muscle Spasms</MenuItem>
-                  <MenuItem value="Inflammation">Inflammation</MenuItem>
-                  <MenuItem value="Nausea">Nausea</MenuItem>
-                </Select>
-              </label>
-            </Paper>
-          </Grid>
-
-          <Grid item xs={4}>
-            <Paper className={classes.paper}>
-              <label>
-                Effects:
-                <Select
-                  name="effect"
-                  value={userInput.effect}
-                  onChange={onChangeHandler}
-                >
-                  <MenuItem value="Relaxed">Relaxed</MenuItem>
-                  <MenuItem value="Happy">Happy</MenuItem>
-                  <MenuItem value="Euphoric">Euphoric</MenuItem>
-                  <MenuItem value="Uplifted">Uplifted</MenuItem>
-                  <MenuItem value="Sleepy">Sleepy</MenuItem>
-                  <MenuItem value="Dry Mouth">Dry Mouth</MenuItem>
-                  <MenuItem value="Focused">Focused</MenuItem>
-                  <MenuItem value="Energetic">Energetic</MenuItem>
-                  <MenuItem value="Paranoid">Paranoid</MenuItem>
-                  <MenuItem value="Anxious">Anxious</MenuItem>
-                  <MenuItem value="Hungry">Hungry</MenuItem>
-                  <MenuItem value="Talkative">Talkative</MenuItem>
-                  <MenuItem value="Creative">Creative</MenuItem>
-                </Select>
-              </label>
-            </Paper>
-          </Grid>
-           */}
+              <p>Example: "I'm feeling anxious and tired."</p>
             </div>
+            
           </div>
         </div>
-        y
       </form>
     </div>
   );
