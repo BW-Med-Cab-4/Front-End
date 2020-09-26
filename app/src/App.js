@@ -1,34 +1,22 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-
-import "./App.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Nav from "./components/Nav";
-import "./App.css";
-
 import Dashboard from "./components/Dashboard";
 import PrivateRoute from "./components/utils/PrivateRoute";
 import axiosWithAuth from "./components/utils/axiosWithAuth";
 import SignUp from "./components/signup/SignUp";
 import Login from "./components/login/Login";
-
 import { Context } from "./components/utils/Context";
 
 function App() {
   const userid = window.localStorage.getItem("id");
-  const [recommendList, setRecommendList] = useState([
-    // {
-    //   userid: userid,
-    //   prediction: "",
-    //   description: "",
-    //   rating: "",
-    // },
-  ]);
+  const [recommendList, setRecommendList] = useState([]);
   const [userInput, setUserInput] = useState({
-    // id: null,
     ailment: "I'm feeling...",
   });
+  // Get inputs data. set userInput to that data
   useEffect(() => {
     axiosWithAuth()
       .get(`https://med-cab-user.herokuapp.com/api/inputs/${userid}`)
@@ -42,6 +30,7 @@ function App() {
         console.log(err);
       });
   }, []);
+  // Get recommendations data. Set recommendList to that data.
   const getData = () => {
     axiosWithAuth()
       .get(`https://med-cab-user.herokuapp.com/api/recommendations/${userid}`)
@@ -54,6 +43,7 @@ function App() {
         // debugger
       });
   };
+  // Log out by clearing local storage
   const logOut = () => {
     window.localStorage.clear();
   };

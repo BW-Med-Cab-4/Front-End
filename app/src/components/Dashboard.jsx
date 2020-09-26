@@ -5,7 +5,7 @@ import Recommends from "../components/recommends/Recommends";
 function Dashboard() {
   return (
     <div>
-      <div className="newRecommend"></div>
+      <div className="recommend"></div>
       <NewRecommend />
       <Recommends />
     </div>
