@@ -11,7 +11,7 @@ const NewRecommend = (props) => {
   const userid = window.localStorage.getItem("id");
 
   // Web API POST request
-
+  // post userInput to ds database. Post data retrieved from ds database to recommendations database
   const addNewRecommend = (e) => {
     e.preventDefault();
     axiosWithAuth()
